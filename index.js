@@ -11,6 +11,8 @@ function capturarDatos(){
 
     botonRegistrarse.addEventListener("click",function(){
         
+        // Verifica campos vacios
+        
         if(CamposVacios() == false){
 
             
