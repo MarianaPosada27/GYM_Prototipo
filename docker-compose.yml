@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  frontend:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    networks:
+      - mynetwork
+
+  api:
+    build: ./API
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=usuario
+      - DB_PASSWORD=root
+      - DB_NAME=dbclientes
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - mynetwork
+
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbclientes
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./API/dbclientes.sql:/docker-entrypoint-initdb.d/dbclientes.sql
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "usuario", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+
+networks:
+  mynetwork:

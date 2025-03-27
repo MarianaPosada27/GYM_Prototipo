@@ -1,0 +1,25 @@
+
+body{
+
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+header{
+    text-align: center;
+    background-color: black;
+    color: orange;
+    
+}
+
+#divFinal{
+    padding-top: 20px;
+}
+
+
+
+#contenedorPagoTarjeta{
+    padding-bottom: 20px;
+}

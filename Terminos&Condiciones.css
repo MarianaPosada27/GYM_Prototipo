@@ -1,0 +1,25 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin:5%;
+    text-align: justify;
+    
+}
+
+
+
+header h1{
+
+    text-align: center;
+
+}
+
+footer .container{
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+
+}
+
+
+

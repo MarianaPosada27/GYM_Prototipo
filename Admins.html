@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    
+    <link rel="stylesheet" href="Admins.css">
+  </head>
+  
+  <body>
+
+    <header >
+        <div class="container">
+            <p class="logo"> Sistema Integrado GymSis <span class="color-rojo"> - Administrador </span></p>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#somos-gymsis">¿Quienes somos?</a>
+                <a href="#nuestros-servicios">Nuestros servicios</a>
+                <a href="#contactenos">Contactenos</a>
+                <a href="Login.html"> <span class="color-rojo"> Cerrar sesion </span></a>
+            </nav>
+    
+        </div>
+        </header>
+
+      <div class="container" id="fechaSistema" >
+
+      </div>
+
+
+        <div class="container" id="tablaDatos">
+          
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" id="botonCrear"> <b>Añadir cliente</b> </button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" id="botonBusqueda"> <b>Busqueda especifica</b> </button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" id="botonRefrescar"> <b>Refrescar</b> </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="botonOpciones"> <b>Ajustes</b> </button>
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" id="botonReportes"> <b>Reportes</b> </button>
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" id="botonPagos"> <b>Pagos</b> </button>
+
+            <table id="tablaClientes" class="table mt-2 table-bordered table-striped">
+                  <thead>
+                      <tr class="text-center">
+                        <th>Id</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>N° Identificacion</th>
+                        <th>Correo Electronico</th>
+                        <th>Telefono Celular</th>
+                        <th>Tipo Plan</th>
+                        <th>Valor Plan</th>
+                        <th>Fecha Inicio</th>
+                        <th>Acciones</th>
+                        <th>Contraseña</th>
+                      </tr>
+                  </thead>  
+                  <tbody class="text-center">
+
+
+                  </tbody>
+            </table>
+
+        </div>
+    
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-black" >
+        <h5 class="modal-title" id="exampleModalLabel">Formulario de registro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombre" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre">
+          </div>
+          <div class="mb-3">
+            <label for="apellido" class="col-form-label">Apellido:</label>
+            <input type="text" class="form-control" id="apellido">
+          </div>
+          <div class="mb-3">
+            <label for="identificacion" class="col-form-label">N° Identificacion:</label>
+            <input type="text" class="form-control" id="identificacion">
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="col-form-label">Correo Electronico:</label>
+            <input type="text" class="form-control" id="correo">
+          </div>
+          <div class="mb-3">
+            <label for="contraseña" class="col-form-label">Contraseña</label>
+            <input type="password" class="form-control" id="contraseñaCliente">
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="col-form-label">Telefono Celular:</label>
+            <input type="text" class="form-control" id="telefono">
+          </div>
+          <div class="mb-3">
+            <label for="plan" class="col-form-label">Tipo Plan:</label>
+            <select name="plan" id="plan" class="form-control"> 
+                <option label="Seleccione su plan"></option>
+                <option value="A"> Plan A</option>
+                <option value="B"> Plan B</option>
+                <option value="C"> Plan C</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="valor" class="col-form-label">Valor Plan:</label>
+            <input type="number" class="form-control" id="valor">
+          </div>
+          <div class="mb-3">
+            <label for="fecha" class="col-form-label">Fecha Inicial</label>
+            <input type="date" class="form-control" id="fecha"> <br> <br>
+            <label> <a href="Termino&Condiciones.html" target="_blank" >Acepto terminos y condiciones</a> </label> <input type="checkbox">
+          </div>
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar registro</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+  <div class="container" id="TablaBusqueda">
+    <h4>Busqueda especifica:</h4>
+      <table id="TablaResultados" class="table mt-2 table-bordered table-striped" >
+          <thead>
+            <tr class="text-center">
+              <th>Id</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>N° Identificacion</th>
+              <th>Correo Electronico</th>
+              <th>Telefono Celular</th>
+              <th>Tipo Plan</th>
+              <th>Valor Plan</th>
+              <th>Fecha Inicio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody  class="contenedorResultados" id="contenedorResultados" class = "text-center">
+
+
+          </tbody>
+
+      </table>
+
+
+
+
+
+
+  </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="Admins.js" ></script>
+
+    <footer>
+      <div class="container">
+          <p>Prototipo Sistema Integrado de Gimnasios (GymSis). 
+              <b>Elaborado por:</b> Sebastian Rivera Mira</p>    
+              <img src="Images/logoSRM.png" id="LogoSRM" width="290px">
+  
+      </div>
+      
+  </footer>
+  </body>
+
+  
+</html>
